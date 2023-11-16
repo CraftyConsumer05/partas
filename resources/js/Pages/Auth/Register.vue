@@ -24,6 +24,13 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
+        <a
+        href="http://127.0.0.1:8000/"
+        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+        >
+            Cancel
+        </a>
+        
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="name" value="Name" />

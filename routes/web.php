@@ -74,8 +74,7 @@ Route::middleware('auth')->group(function () {
     //Route::post('reservation/{schedule}', [ReservationsController::class, 'update'])->name('schedule.update');
     //  Route::delete('destroy_schedule/{busSchedule}', [BusScheduleController::class, 'destroy'])->name('schedule.destroy');
 
-
-    //locations
+    // Locations
     Route::get('locations', [LocationController::class, 'index'])->name('locations');
     Route::get('create_location', [LocationController::class, 'create'])->name('location.create');
     Route::get('show_location', [LocationController::class, 'show'])->name('location.show');
@@ -83,6 +82,9 @@ Route::middleware('auth')->group(function () {
     Route::get('edit_location', [LocationController::class, 'edit'])->name('location.edit');
     Route::put('location/{location}', [LocationController::class, 'update'])->name('location.update');
     Route::delete('destroy_location/{location}', [LocationController::class, 'destroy'])->name('location.destroy');
+    Route::get('/check-location/{location}', [LocationController::class, 'checkLocation']);
+    Route::post('/location/store', [LocationController::class, 'store']);
+
 
     // Payment
     Route::get('payments', [PaymentsController::class, 'index'])->name('payments');

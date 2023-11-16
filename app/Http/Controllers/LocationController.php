@@ -1,10 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+
 use App\Models\Location;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 
 class LocationController extends Controller
 {
@@ -17,6 +20,7 @@ class LocationController extends Controller
     return response()->json($locations);
     }
 
+
     public function index()
     {
     $locations= Location::all();
@@ -26,21 +30,45 @@ class LocationController extends Controller
 
 
 
+
+
+
+
     public function create()
     {
         return Inertia::render('Locations/Create');
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
-    {
-        Location::create([
-            "location"=> Request::get("location"),
-        ]);
-        return to_route('locations')->with('success', 'New  created.');
+    public function store(Request $request)
+{
+    $locationName = $request->input('location');
+
+
+    // Check if the location already exists in the database
+    $existingLocation = Location::where('location', $locationName)->first();
+
+
+    if ($existingLocation) {
+        // If the location exists, show an alert and redirect back
+        return redirect()->route('locations')->with('error', 'Location already exists.');
     }
+
+
+    // If the location doesn't exist, create a new entry
+    Location::create([
+        "location" => $locationName,
+    ]);
+
+
+    return redirect()->route('locations')->with('success', 'New location created.');
+}
+
+
+
 
     /**
      * Display the specified resource.
@@ -50,15 +78,18 @@ class LocationController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit()
     {
 
+
         $location= Location::find(Request::get("id"));
         return Inertia::render('Locations/Edit',['location'=>$location]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -69,12 +100,14 @@ class LocationController extends Controller
             "location"=> 'required',
         ]);
 
+
         Location::where('id',$location->id)
         ->update([
             "location"=> Request::get("location"),
         ]);
         return to_route('locations')->with('success', 'location  Updated.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,3 +118,4 @@ class LocationController extends Controller
         return to_route('locations');
     }
 }
+
