@@ -61,6 +61,5 @@ window.addEventListener('click', (e) => {
     </div>
   </div>
         </div>
-    <!-- ... (other navigation content) ... -->
   </nav>
 </template>

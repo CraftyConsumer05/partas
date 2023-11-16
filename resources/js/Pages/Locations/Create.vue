@@ -18,13 +18,6 @@ import TextInput from '@/Components/TextInput.vue'
   }
 
 
-function filterLocations() {
-  return locations.filter(location =>
-    location.name.toLowerCase().includes(form.location.toLowerCase())
-  );
-}
-
-
 </script>
 
 
