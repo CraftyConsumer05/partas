@@ -4,15 +4,60 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import NavLink from '@/Components/NavLink.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 
-defineProps({
-    locations: Object
+
+import {useToast} from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+import { onMounted } from 'vue';
+import { watchEffect } from 'vue';
+import { propsToAttrMap } from '@vue/shared';
+
+const $toast = useToast();
+let instance = $toast.success('You did it!');
+
+// Force dismiss specific toast
+instance.dismiss();
+
+// Dismiss all opened toast immediately
+$toast.clear();
+
+
+const props = defineProps({
+    locations: Object,
+    message: String,
 })
+
+watchEffect(()=>{
+    if(props.message){
+        if(props.message.split(':')[0]=="error"){
+            $toast.error(props.message.split(':')[1],{
+            position: "top",
+            dismissible: true,
+            duration: 3000,
+            });
+        }else if(props.message.split(':')[0]=="success"){
+            $toast.success(props.message.split(':')[1],{
+            position: "top",
+            dismissible: true,
+            duration: 3000,
+            });
+        } 
+    }
+})
+
 
 function destroy(id){
     if (confirm('Are you sure you want to delete this Location?')) {
         router.delete(route("location.destroy",id));
+
+        this.$toast.info("Location Deleted", {
+        position: "top",
+        dismissible: true,
+        duration: 3000
+        });
     }
 }
+
+
 
 </script>
 
@@ -31,8 +76,13 @@ function destroy(id){
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             Add New
+                            
                     </Link>
+                    
                   </div>
+                    
+                        
+                  
 
 
                     <div class="p-6 text-gray-900">
@@ -68,7 +118,6 @@ function destroy(id){
                             </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>
