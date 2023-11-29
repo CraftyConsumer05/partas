@@ -89,7 +89,7 @@ class LocationController extends Controller
         ->update([
             "location"=> Request::get("location"),
         ]);
-        return to_route('locations')->with('success', 'location
+        return to_route('locations')->with('message', 'location
         Updated.');
     }
 
