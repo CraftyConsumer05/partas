@@ -7,7 +7,18 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-default.css';
+
+const app = createApp({});
+app.use(ToastPlugin);
+app.mount('#app');
+
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+
+
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

@@ -8,7 +8,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import { reactive,ref } from 'vue'
 
 const props = defineProps({
-      location: Object
+      location: Object,
+      error: String
   })
 
 
