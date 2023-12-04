@@ -1,5 +1,5 @@
 <template>
-          <img src="/storage/partas_logo.png"  >
+          <img src="../../../public/partas_logo.png"  >
 
 
 </template>

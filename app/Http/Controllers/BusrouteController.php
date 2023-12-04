@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Busroute;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\UpdateBusrouteRequest;
 use App\Models\Location;
 use Inertia\Inertia;

@@ -13,13 +13,13 @@ import { Head } from '@inertiajs/vue3';
             <div class="p-6 dark:border-gray-700 mt-14 bg-blue-400">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="/storage/carousel1.jpg" alt="example image" width="300" height="150">
+                        <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="example image" width="300" height="150">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="/storage/carousel2.jpg" alt="Example Image 2" width="300" height="150">
+                        <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="Example Image 2" width="300" height="150">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="/storage/carousel3.jpg" alt="Example Image 3" width="300" height="150">
+                        <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="Example Image 3" width="300" height="150">
                     </div>   
                 </div>
                 <div style="margin-top: 20px;">

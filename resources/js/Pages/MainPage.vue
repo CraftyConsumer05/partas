@@ -22,7 +22,7 @@ defineProps({
         <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start">
                     <Link href="/" class="flex ml-2 md:mr-24">
-                    <img src="/storage/partas_logo.png" class="h-8 mr-3" alt="FlowBite Logo" />
+                    <img src="../../../public/partas_logo.png" class="h-8 mr-3" alt="FlowBite Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Partas Bus Inc</span>
                     </Link>
                     <span class="self-center text-xl text-green-800 font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Ticket Reservation System</span>
@@ -72,22 +72,27 @@ defineProps({
 <div class="p-6 dark:border-gray-700 mt-14 bg-blue-400">
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.jpg" alt="">
+            <!-- <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.jpg" alt=""> -->
+            <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="Image">
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
+            <!-- <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt=""> -->
+            <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="">
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel2.jpg" alt="">
+            <!-- <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel2.jpg" alt=""> -->
+            <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="">
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel3.jpg" alt="">
+            <!-- <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel3.jpg" alt=""> -->
+            <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="">
         </div>
         <div>
             <Carousel />
         </div>
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
+            <!-- <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt=""> -->
+            <img class="h-auto max-w-full rounded-lg" src="https://placehold.co/600x400?text=IMAGE" alt="">
         </div>
 
     </div>
