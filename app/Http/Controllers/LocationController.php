@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use LDAP\Result;
 
-
 class LocationController extends Controller
 {
     /**
@@ -28,19 +27,6 @@ class LocationController extends Controller
         return Inertia::render('Locations/Create');
 
     }
-
-
-    // If the location doesn't exist, create a new entry
-    Location::create([
-        "location" => $locationName,
-    ]);
-
-
-    return redirect()->route('locations')->with('success', 'New location created.');
-}
-
-
-
 
     /**
     * Store a newly created resource in storage.
@@ -80,7 +66,6 @@ class LocationController extends Controller
         //
     }
 
-
     /**
     * Show the form for editing the specified resource.
     */
@@ -89,7 +74,6 @@ class LocationController extends Controller
         $location= Location::find(Request::get("id"));
         return Inertia::render('Locations/Edit',['location'=>$location]);
     }
-
 
     /**
     * Update the specified resource in storage.
@@ -101,7 +85,6 @@ class LocationController extends Controller
         "location"=> 'required',
         ]);
 
-
         Location::where('id',$location->id)
         ->update([
             "location"=> Request::get("location"),
@@ -109,7 +92,6 @@ class LocationController extends Controller
         return to_route('locations')->with('message', 'location
         Updated.');
     }
-
 
     /**
     * Remove the specified resource from storage.

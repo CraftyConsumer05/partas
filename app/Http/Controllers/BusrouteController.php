@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Busroute;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateBusrouteRequest;
 use App\Models\Location;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class BusrouteController extends Controller
@@ -34,20 +34,33 @@ class BusrouteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        Request::validate([
+        $request->validate([
             'origin' => 'required',
             'destination' => 'required',
         ]);
-
-
-        Busroute::create([
-            'origin' =>Request::get('origin'),
-            'destination' => Request::get('destination'),
+    
+        $origin = $request->input('origin');
+        $destination = $request->input('destination');
+    
+        // Check if the route already exists in the database
+        $existingRoute = BusRoute::where('origin', $origin)
+            ->where('destination', $destination)
+            ->first();
+    
+        if ($existingRoute) {
+            // If the route exists, show an alert and redirect back
+            return redirect()->route('busroutes')->with('message', 'error:Route already exists.');
+        }
+    
+        // If the route doesn't exist, create a new entry
+        BusRoute::create([
+            'origin' => $origin,
+            'destination' => $destination,
         ]);
-        return to_route('busroutes')->with('success', 'New Route  created.');
-
+    
+        return redirect()->route('busroutes')->with('success', 'New Route created.');
     }
 
     /**
