@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Location;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Request as RequestFacade; 
+use Illuminate\Http\Request as HttpRequest; 
 use Inertia\Inertia;
 use LDAP\Result;
 
@@ -32,7 +33,7 @@ class LocationController extends Controller
     * Store a newly created resource in storage.
     */
 
-    public function store(Request $request){
+    public function store(HttpRequest $request){
         $locationName = $request->input('location');
 
         // Check if the location already exists in the database
@@ -71,7 +72,7 @@ class LocationController extends Controller
     */
 
     public function edit(){
-        $location= Location::find(Request::get("id"));
+        $location= Location::find(RequestFacade::get("id"));
         return Inertia::render('Locations/Edit',['location'=>$location]);
     }
 
@@ -79,15 +80,15 @@ class LocationController extends Controller
     * Update the specified resource in storage.
     */
 
-    public function update(Location $location){
+    public function update(Location $location, HttpRequest $httpRequest){
 
-        Request::validate([
+        $httpRequest->validate([
         "location"=> 'required',
         ]);
 
         Location::where('id',$location->id)
         ->update([
-            "location"=> Request::get("location"),
+            "location"=> $httpRequest::get("location"),
         ]);
         return to_route('locations')->with('message', 'location
         Updated.');

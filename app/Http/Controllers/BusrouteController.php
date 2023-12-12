@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Busroute;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Request as RequestFacade;
+use Illuminate\Http\Request as HttpRequest;
 use App\Http\Requests\UpdateBusrouteRequest;
 use App\Models\Location;
 use Inertia\Inertia;
@@ -34,7 +35,7 @@ class BusrouteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(HttpRequest $request)
     {
         $request->validate([
             'origin' => 'required',
@@ -76,7 +77,7 @@ class BusrouteController extends Controller
      */
     public function edit(Busroute $busroute)
     {
-        $id=Request::get("id");
+        $id=RequestFacade::get("id");
         $busroute= Busroute::find($id);
         $locations= Location::all();
         return Inertia::render('Busroutes/Edit',['busroute'=>$busroute,'locations'=>$locations]);
@@ -85,17 +86,17 @@ class BusrouteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Busroute $busroute)
+    public function update(Busroute $busroute, HttpRequest $httpRequest)
     {
-        Request::validate([
+        $httpRequest::validate([
             'origin' => 'required',
             'destination' => 'required',
         ]);
 
         Busroute::where('id',$busroute->id)
         ->update([
-            'origin' =>Request::get('origin'),
-            'destination' => Request::get('destination')
+            'origin' =>$httpRequest::get('origin'),
+            'destination' => $httpRequest::get('destination')
         ]);
         return to_route('busroutes')->with('success', 'Route  edited.');
     }
