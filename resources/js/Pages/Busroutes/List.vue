@@ -4,13 +4,47 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import NavLink from '@/Components/NavLink.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 
-defineProps({
-    busroutes: Object
+import {useToast} from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+import { onMounted } from 'vue';
+import { watchEffect } from 'vue';
+import { propsToAttrMap } from '@vue/shared';
+
+const $toast = useToast();
+
+
+const props = defineProps({
+    busroutes: Object,
+    message: String
+})
+
+watchEffect(()=>{
+    if(props.message){
+        if(props.message.split(':')[0]=="error"){
+            $toast.error(props.message.split(':')[1],{
+            position: "top",
+            dismissible: true,
+            duration: 3000,
+            });
+        }else if(props.message.split(':')[0]=="success"){
+            $toast.success(props.message.split(':')[1],{
+            position: "top",
+            dismissible: true,
+            duration: 3000,
+            });
+        } 
+    }
 })
 
 function destroy(id){
     if (confirm('Are you sure you want to delete this Route?')) {
         router.delete(route("busroutes.destroy",id));
+
+        this.$toast.info("Route Deleted", {
+        position: "top",
+        dismissible: true,
+        duration: 3000
+        });
     }
 }
 

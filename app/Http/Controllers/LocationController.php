@@ -88,9 +88,9 @@ class LocationController extends Controller
 
         Location::where('id',$location->id)
         ->update([
-            "location"=> $httpRequest::get("location"),
+            "location"=> $httpRequest->get("location"),
         ]);
-        return to_route('locations')->with('message', 'location
+        return to_route('locations')->with('message', 'success:location
         Updated.');
     }
 

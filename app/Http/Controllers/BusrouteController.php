@@ -19,7 +19,8 @@ class BusrouteController extends Controller
 
         $busroutes = Busroute::all();
         return Inertia::render('Busroutes/List',[
-            'busroutes' => $busroutes
+            'busroutes' => $busroutes,
+            'message' => session('message')
         ]);
     }
 
@@ -61,7 +62,7 @@ class BusrouteController extends Controller
             'destination' => $destination,
         ]);
     
-        return redirect()->route('busroutes')->with('success', 'New Route created.');
+        return redirect()->route('busroutes')->with('message', 'success:New Route created.');
     }
 
     /**
@@ -88,17 +89,17 @@ class BusrouteController extends Controller
      */
     public function update(Busroute $busroute, HttpRequest $httpRequest)
     {
-        $httpRequest::validate([
+        $httpRequest->validate([
             'origin' => 'required',
             'destination' => 'required',
         ]);
 
         Busroute::where('id',$busroute->id)
         ->update([
-            'origin' =>$httpRequest::get('origin'),
-            'destination' => $httpRequest::get('destination')
+            'origin' =>$httpRequest->get('origin'),
+            'destination' => $httpRequest->get('destination')
         ]);
-        return to_route('busroutes')->with('success', 'Route  edited.');
+        return to_route('busroutes')->with('message', 'success:Route edited.');
     }
 
     /**

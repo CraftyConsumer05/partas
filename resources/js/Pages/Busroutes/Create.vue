@@ -7,6 +7,15 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { reactive,ref } from 'vue'
 
+import {useToast} from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+import { onMounted } from 'vue';
+import { watchEffect } from 'vue';
+import { propsToAttrMap } from '@vue/shared';
+
+const $toast = useToast();
+
+
   const form=reactive({
       origin: "",
       destination: "",
@@ -14,17 +23,29 @@ import { reactive,ref } from 'vue'
 
   function submit() {
     if(form.origin === form.destination){
-        alert("Origin and Destination cannot be the same");
+        // alert("Origin and Destination cannot be the same");
+        
+        $toast.info("Origin and Destination cannot be the same", {
+        position: "top",
+        dismissible: true,
+        duration: 3000
+        });
         return;
     }
 
     if(!form.origin || !form.destination){
-        alert("All fields are required");
+        // alert("All fields are required");
+        
+        $toast.info("All fields are required", {
+        position: "top",
+        dismissible: true,
+        duration: 3000
+        });
         return;
     }
 
     router.post(route("busroutes.store"),form);
-    alert("Route created");
+    // alert("Route created");
 
   }
   defineProps({

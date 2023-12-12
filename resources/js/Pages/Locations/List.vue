@@ -12,13 +12,12 @@ import { watchEffect } from 'vue';
 import { propsToAttrMap } from '@vue/shared';
 
 const $toast = useToast();
-let instance = $toast.success('You did it!');
-
+// toast docu below
+// let instance = $toast.success('You did it!');
 // Force dismiss specific toast
-instance.dismiss();
-
+// instance.dismiss();
 // Dismiss all opened toast immediately
-$toast.clear();
+// $toast.clear();
 
 
 const props = defineProps({
